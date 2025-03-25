@@ -21,7 +21,7 @@ namespace AuthApi.Controllers // Espacio de nombres que agrupa los controladores
         public IActionResult Get()
         {
             // Devuelve una respuesta 200 OK con un mensaje JSON
-            return Ok(new { message = "¡Acceso autorizado a Auth0!" });
+            return Ok(new { message = "Acceso autorizado a Auth0 validando el Token en .Net" });
         }
     }
 }

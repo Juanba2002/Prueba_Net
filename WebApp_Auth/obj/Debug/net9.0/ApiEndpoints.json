@@ -1,0 +1,12 @@
+[
+  {
+    "ContainingType": "AuthApi.Controllers.SecureController",
+    "Method": "Get",
+    "RelativePath": "api/Secure",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": []
+  }
+]

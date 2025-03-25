@@ -24,6 +24,8 @@ builder.Services.AddAuthentication("Bearer")
 
         // Especifica para qué API es válido el token
         options.Audience = audience;
+
+        options.RequireHttpsMetadata = false;
     });
 
 // Agrega el sistema de autorización para proteger rutas con [Authorize]
@@ -31,6 +33,37 @@ builder.Services.AddAuthorization();
 
 // Agrega los controladores a la app (lo que permite usar la carpeta Controllers)
 builder.Services.AddControllers();
+
+// Agrega Swagger para documentación y pruebas de la API (solo se activa en desarrollo)
+builder.Services.AddEndpointsApiExplorer();
+builder.Services.AddSwaggerGen(c =>
+{
+    c.SwaggerDoc("v1", new() { Title = "WebApp_Auth", Version = "v1" });
+
+    // Agrega soporte para autenticación Bearer en Swagger
+    c.AddSecurityDefinition("Bearer", new Microsoft.OpenApi.Models.OpenApiSecurityScheme
+    {
+        In = Microsoft.OpenApi.Models.ParameterLocation.Header,
+        Description = "Ingrese un token JWT con el prefijo 'Bearer'",
+        Name = "Authorization",
+        Type = Microsoft.OpenApi.Models.SecuritySchemeType.ApiKey
+    });
+
+    c.AddSecurityRequirement(new Microsoft.OpenApi.Models.OpenApiSecurityRequirement
+    {
+        {
+            new Microsoft.OpenApi.Models.OpenApiSecurityScheme
+            {
+                Reference = new Microsoft.OpenApi.Models.OpenApiReference
+                {
+                    Type = Microsoft.OpenApi.Models.ReferenceType.SecurityScheme,
+                    Id = "Bearer"
+                }
+            },
+            Array.Empty<string>()
+        }
+    });
+});
 
 // Configura CORS para permitir solicitudes desde el frontend Angular
 builder.Services.AddCors(options =>
@@ -48,6 +81,13 @@ builder.Services.AddCors(options =>
 
 // Construye la aplicación con los servicios configurados
 var app = builder.Build();
+
+// Habilita Swagger y su UI solo en entorno de desarrollo
+if (app.Environment.IsDevelopment())
+{
+    app.UseSwagger();
+    app.UseSwaggerUI();
+}
 
 // Redirige automáticamente todas las solicitudes HTTP a HTTPS
 app.UseHttpsRedirection();
