@@ -40,9 +40,9 @@ namespace WebApp_Auth.Controllers
                     grant_type = "client_credentials"
                 });
 
-                var tokenData = await tokenResponse.Content.ReadFromJsonAsync<Dictionary<string, string>>();
+                var tokenData = await tokenResponse.Content.ReadFromJsonAsync<TokenResponse>();
 
-                var token = tokenData["access_token"];
+                var token = tokenData.access_token;
 
                 // Instancia del cliente de Management API
                 var managementClient = new ManagementApiClient(token, new Uri(audience1));

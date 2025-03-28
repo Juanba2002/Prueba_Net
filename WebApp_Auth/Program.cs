@@ -1,7 +1,7 @@
 // Crea el constructor de la aplicación (builder), donde se configuran los servicios y la app.
 using Microsoft.IdentityModel.Tokens;
-
 using System.IdentityModel.Tokens.Jwt;
+using WebApp_Auth.Services;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -23,6 +23,7 @@ var audience = config["Auth0:Audience"];
 // -------------------------
 
 // Agrega el servicio de autenticación con esquema "Bearer" y configuración de Auth0
+builder.Services.AddHttpClient();
 builder.Services.AddAuthentication("Bearer")
     .AddJwtBearer("Bearer", options =>
     {
