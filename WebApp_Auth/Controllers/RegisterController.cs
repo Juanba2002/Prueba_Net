@@ -27,7 +27,7 @@ namespace WebApp_Auth.Controllers
                 var domain = _config["Auth0:Domain"];
                 var clientId = _config["Auth0:ClientId"];
                 var clientSecret = _config["Auth0:ClientSecret"];
-                var audience = $"https://{domain}/api/v2/";
+                var audience1 = $"https://{domain}/api/v2/";
 
 
                 // Obtiene un token de acceso usando Client Credentials (para Management API)
@@ -36,7 +36,7 @@ namespace WebApp_Auth.Controllers
                 {
                     client_id = clientId,
                     client_secret = clientSecret,
-                    audience = audience,
+                    audience = audience1,
                     grant_type = "client_credentials"
                 });
 
@@ -45,7 +45,7 @@ namespace WebApp_Auth.Controllers
                 var token = tokenData["access_token"];
 
                 // Instancia del cliente de Management API
-                var managementClient = new ManagementApiClient(token, new Uri(audience));
+                var managementClient = new ManagementApiClient(token, new Uri(audience1));
 
                 // Crea el usuario
                 var userCreateRequest = new UserCreateRequest
