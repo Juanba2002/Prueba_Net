@@ -1,8 +1,38 @@
 [
   {
     "ContainingType": "AuthApi.Controllers.SecureController",
-    "Method": "Get",
-    "RelativePath": "api/Secure",
+    "Method": "AdminOnly",
+    "RelativePath": "api/Secure/admin",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "AuthApi.Controllers.SecureController",
+    "Method": "CustomerOnly",
+    "RelativePath": "api/Secure/cliente",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "AuthApi.Controllers.SecureController",
+    "Method": "GeneralAccess",
+    "RelativePath": "api/Secure/general",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "AuthApi.Controllers.SecureController",
+    "Method": "InspectorOnly",
+    "RelativePath": "api/Secure/inspector",
     "HttpMethod": "GET",
     "IsController": true,
     "Order": 0,

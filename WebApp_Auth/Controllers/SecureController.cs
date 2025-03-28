@@ -1,27 +1,44 @@
-﻿// Importa los atributos y tipos para proteger rutas con [Authorize]
-using Microsoft.AspNetCore.Authorization;
-
-// Importa los tipos necesarios para construir controladores y manejar respuestas HTTP
+﻿using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
-namespace AuthApi.Controllers // Espacio de nombres que agrupa los controladores
+namespace AuthApi.Controllers
 {
-    // Define que esta clase es un controlador de API
+    // Este controlador se encarga de exponer endpoints protegidos por Auth0
     [ApiController]
-
-    // Define la ruta base del controlador: /api/secure
     [Route("api/[controller]")]
     public class SecureController : ControllerBase
     {
-        // Maneja solicitudes GET a /api/secure
-        [HttpGet]
-
-        // Protege este endpoint: solo accesible con un token válido (JWT)
+        // ✅ Endpoint accesible para cualquier usuario autenticado
+        [HttpGet("general")]
         [Authorize]
-        public IActionResult Get()
+        public IActionResult GeneralAccess()
         {
-            // Devuelve una respuesta 200 OK con un mensaje JSON
-            return Ok(new { message = "Acceso autorizado a Auth0 validando el Token en .Net" });
+            return Ok(new { message = "Acceso autorizado a Auth0 validando el token en .NET (usuario autenticado)" });
         }
+
+        //Endpoint exclusivo para usuarios con rol "admin"
+        [HttpGet("admin")]
+        [Authorize(Roles = "admin")]
+        public IActionResult AdminOnly()
+        {
+            return Ok(new { message = "Acceso autorizado SOLO para usuarios con rol 'admin'" });
+        }
+
+        //Endpoint exclusivo para usuarios con rol "inspector"
+        [HttpGet("inspector")]
+        [Authorize(Roles = "inspector")]
+        public IActionResult InspectorOnly()
+        {
+            return Ok(new { message = "Acceso autorizado SOLO para usuarios con rol 'inspector'" });
+        }
+
+        //Endpoint exclusivo para usuarios con rol "inspector"
+        [HttpGet("cliente")]
+        [Authorize(Roles = "cliente")]
+        public IActionResult CustomerOnly()
+        {
+            return Ok(new { message = "Acceso autorizado SOLO para usuarios con rol 'cliente'" });
+        }
+        
     }
 }

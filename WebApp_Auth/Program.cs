@@ -1,4 +1,6 @@
 // Crea el constructor de la aplicación (builder), donde se configuran los servicios y la app.
+using Microsoft.IdentityModel.Tokens;
+
 var builder = WebApplication.CreateBuilder(args);
 
 // Accede a la configuración del archivo appsettings.json
@@ -25,7 +27,14 @@ builder.Services.AddAuthentication("Bearer")
         // Especifica para qué API es válido el token
         options.Audience = audience;
 
+        // Solo para desarrollo local (en producción déjalo en true)
         options.RequireHttpsMetadata = false;
+
+        options.TokenValidationParameters = new TokenValidationParameters
+        {
+            NameClaimType = "name",
+            RoleClaimType = "https://myapp.com/claims/roles"
+        };
     });
 
 // Agrega el sistema de autorización para proteger rutas con [Authorize]
