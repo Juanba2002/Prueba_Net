@@ -43,3 +43,6 @@ C:\Users\bajua\Pontificia Universidad Javeriana\OCTAVO SEMESTRE\Arqui\Auth\WebAp
 C:\Users\bajua\Pontificia Universidad Javeriana\OCTAVO SEMESTRE\Arqui\Auth\WebApp_Auth\WebApp_Auth\obj\Debug\net9.0\WebApp_Auth.pdb
 C:\Users\bajua\Pontificia Universidad Javeriana\OCTAVO SEMESTRE\Arqui\Auth\WebApp_Auth\WebApp_Auth\obj\Debug\net9.0\WebApp_Auth.genruntimeconfig.cache
 C:\Users\bajua\Pontificia Universidad Javeriana\OCTAVO SEMESTRE\Arqui\Auth\WebApp_Auth\WebApp_Auth\obj\Debug\net9.0\ref\WebApp_Auth.dll
+C:\Users\bajua\Pontificia Universidad Javeriana\OCTAVO SEMESTRE\Arqui\Auth\WebApp_Auth\WebApp_Auth\bin\Debug\net9.0\Auth0.Core.dll
+C:\Users\bajua\Pontificia Universidad Javeriana\OCTAVO SEMESTRE\Arqui\Auth\WebApp_Auth\WebApp_Auth\bin\Debug\net9.0\Auth0.ManagementApi.dll
+C:\Users\bajua\Pontificia Universidad Javeriana\OCTAVO SEMESTRE\Arqui\Auth\WebApp_Auth\WebApp_Auth\bin\Debug\net9.0\Newtonsoft.Json.dll

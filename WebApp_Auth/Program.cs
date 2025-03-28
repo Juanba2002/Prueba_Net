@@ -1,10 +1,15 @@
 // Crea el constructor de la aplicación (builder), donde se configuran los servicios y la app.
 using Microsoft.IdentityModel.Tokens;
 
+using System.IdentityModel.Tokens.Jwt;
+
 var builder = WebApplication.CreateBuilder(args);
 
 // Accede a la configuración del archivo appsettings.json
 var config = builder.Configuration;
+
+//Para evitar conflictos con validación de claims estándar
+JwtSecurityTokenHandler.DefaultInboundClaimTypeMap.Clear();
 
 // Define el dominio de Auth0 a partir de la configuración (con https:// incluido)
 var domain = $"https://{config["Auth0:Domain"]}/";

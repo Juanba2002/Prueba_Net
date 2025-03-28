@@ -1,5 +1,21 @@
 [
   {
+    "ContainingType": "WebApp_Auth.Controllers.RegisterController",
+    "Method": "RegisterUser",
+    "RelativePath": "api/Register",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "request",
+        "Type": "WebApp_Auth.Models.Auth0UserRegistration",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
     "ContainingType": "AuthApi.Controllers.SecureController",
     "Method": "AdminOnly",
     "RelativePath": "api/Secure/admin",
